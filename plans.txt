@@ -1,1 +1,36 @@
-make something useful
+==========================
+Scientific Document Parser
+==========================
+
+"The Vision"
+    - A free-to-use web application for viewing scientific documents.
+    - Before loading the document, parser goes through each line and recognizes
+      lines such as "...where N denotes number of calls..." and remembers it.
+    - Whenever the user clicks/hovers over relevant instances of remembered
+      variables (particularly in an equation), a pop-up appears nearby that
+      reminds the user what the variables denotes.
+    - Syntax-highlighting for stored variables, pop-up animations, etc.
+
+
+Execution
+    Final product requires (at least) the following components:
+    - the Parser
+        -- mainly natural language processing
+        -- recognizing when a variable should be initialized
+         * keywords such as "denotes, means, is"
+        -- recognizing when a variable should be recalled
+         * ex. if "a" is stored as a variable, how to distinguish it as a
+           variable vs. a regular word?
+
+    - web deployment
+        -- front end
+         * make it not ugly
+        -- back end:
+         * handling server client interactions
+         * security (maybe not a big deal since no sensitive info should be
+           stored on server or deployed from server)
+
+
+Progress Timeline
+    Start - Nov 2018
+    
