@@ -1,0 +1,55 @@
+Numerical Fourier Transform
+
+Shoyo Inokuchi
+1W16BG02-3
+
+1. Introduction
+
+1.1 Background
+
+The Fourier Transform is an integral transform used in various fields of enginecring and
+science. The process transforms a function of time-domain f(¢) to a function of frequency-
+domain f(w), and its applications range from analyzing complex waveforms for signal
+processing to efficiently solving partial differential equations. The Fourier Transform is
+mathematically denoted
+
+[ ” p(tje*tat (1.1)
+
+ 
+
+The inverse Fourier transform, as the name suggests, serves as an inverse process to the
+Fourier transform described by Equation (1.1). The process changes a frequency-domain
+function f (w) back into a function of time-domain f(t), which is useful for extrapolating the
+original waveform given a frequency distribution function. The inverse Fourier Transform
+is defined as
+
+Ff) = 40) =f flweaw (12)
+
+The Fourier transform can only be applied to functions that are defined on continuous
+time signals. For most real-world applications, this condition is satisfied as signals are
+processed over a given period of time. However, in order to mathematically apply the
+Fourier transform, the time signal must be observed infinitely precisely. This poses a
+fundamental problem for applying the mathematical notations expressed by Equations
+(1.1) and (1.2). In real-world scenarios, a function f(t) can only be sampled at points
+between finitely spaced intervals. In such cases, we apply numerical methods such as
+discrete Fourier transform and fast Fourier transform, which we explore in detail in this
+report.
+
+1.2 Derivation of the Fourier Transform
+
+The concept of Fourier transform is motivated by the study of the Fourier series, where a
+complex wave function is broken down to a sum of simpler sine and cosine functions. The
+complex Fourier series synthesis equation is denoted as
+
+f= YS eer" (13)
+
+n=—00
+
+where
+
+   
+
+f(the-™"at (14)
+
+p. 1/16
+
