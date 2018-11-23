@@ -3,17 +3,16 @@ import tempfile
 import pytesseract
 
 
-def processDocument(path):
-    # TODO: consider better file checking
+def process_document(path):
+    # TODO: consider more robust file checking
     if not path.lower().endswith('.pdf'):
         raise Exception('File should be in PDF format')
 
-    plaintxt = extract_PDFtext(path)
+    plaintxt = extract_pdf_text(path)
     var2def = extract_vars(plaintxt)
 
 
-
-def extract_PDFtext(pdf_path):
+def extract_pdf_text(pdf_path):
     """
     Takes in path for PDF document and returns the text as a string.
 
@@ -51,9 +50,9 @@ def extract_vars(text):
     }
 
     var2def = {}
-    
+
     for sentence in text.split('.'):
-        if :
+        if True:
             pass
 
     return var2def
@@ -63,8 +62,6 @@ def redraw(image, var2def, var2ref):
     pass
 
 
-
 if __name__ == '__main__':
     path = '../pdfs/fourier.pdf'
-    processDocument(path)
-
+    ret = process_document(path)
