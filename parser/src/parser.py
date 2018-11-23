@@ -51,10 +51,9 @@ def extract_vars(text):
     }
 
     var2def = {}
-    buffer = ''
     
-    for word in text:
-        if word in keywords:
+    for sentence in text.split('.'):
+        if :
             pass
 
     return var2def
