@@ -8,7 +8,7 @@ html {
       width: 1000px; }
     html body #heading {
       width: 100%;
-      background-image: url("../images/zucc.jpg");
+      background-image: url("../../sdp_main/templates/11:23/app/images/zucc.jpg");
       background-size: 100% 50%;
       background-repeat: no-repeat; }
       html body #heading .title {
