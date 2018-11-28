@@ -1,0 +1,36 @@
+// styles.scss
+html {
+  font-family: "Arial", Times, serif;
+  background-color: #557399;
+  body {
+    padding: 0;
+    margin: 0;
+    .content {
+      width: 1000px;
+    }
+    #heading {
+      width: 100%;
+      background-image: url("../images/zucc.jpg");
+      background-size: 100% 50%;
+      background-repeat: no-repeat;
+
+      .title {
+        font-size: 90px;
+        color: white;
+        margin: 0;
+        margin-bottom: 40px;
+        h1 {
+          margin: 0;
+          span {
+            font-size: 45px;
+          }
+        }
+        .sub {
+          font-size: 40px;
+          line-height: 40px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
