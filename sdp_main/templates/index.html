@@ -6,18 +6,30 @@
 
 {% block style %}
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
 {% endblock %}
 
 {% block body %}
     <header>
         <section id="heading">
-            <div class="title">
-                <h1>S<span>ci</span>D<span>oc</span>P<span>arser</span></h1>
-                <h2 class="sub">-Online Scientific Document Parser-</h2>
+            <div class="content">
+                <div class="title">
+                    <h1>S<span>ci</span>D<span>oc</span>P<span>arser</span></h1>
+                    <h2 class="sub">-Online Scientific Document Parser-</h2>
+                </div>
+            <a href="https://github.com/shoyo-inokuchi/SciDocParser"><img src="{% static "images/GitHub-Mark-32px.png" %}" srcset="{% static "images/GitHub-Mark-32px.png" %} 1x,{% static "images/GitHub-Mark-64px.png" %} 2x" width="32" height="32" alt="To our GibHub page!"></a>
             </div>
-            <a href="https://github.com/shoyo-inokuchi/SciDocParser">GitHub Page</a>
         </section>
     </header>
-    <button type="button">upload paper</button>
+    <section id="buttoncont">
+        <div class="content">
+            <a href=""><div class="btn">upload paper</div></a>
+        </div>
+    </section>
+    <section id="jscontainer">
+        
+    </section>
+    <footer>
+        
+    </footer>
 {% endblock %}

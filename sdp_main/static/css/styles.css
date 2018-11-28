@@ -1,39 +1,37 @@
 html {
-    font-family: "Arial", Times, serif;
-    background-color: #557399;
-}
-
-html body {
+  font-family: "Arial", Times, serif; }
+  html body {
     padding: 0;
     margin: 0;
-}
-
-html body .content {
-    width: 1000px;
-}
-
-html body #heading {
-    width: 100%;
-    background-size: 100% 50%;
-    background: url("../images/zucc.jpg") no-repeat;
-}
-
-html body #heading .title {
-    font-size: 90px;
-    color: white;
-    margin: 0 0 40px;
-}
-
-html body #heading .title h1 {
-    margin: 0;
-}
-
-html body #heading .title h1 span {
-    font-size: 45px;
-}
-
-html body #heading .title .sub {
-    font-size: 40px;
-    line-height: 40px;
-    margin: 0;
-}
+    background-color: #f2f7f7; }
+    html body .content {
+      width: 1000px;
+      margin: 0 auto 0 auto;
+      background-color: white; }
+    html body #heading {
+      text-align: center; }
+      html body #heading .title {
+        font-size: 90px;
+        margin: 0;
+        margin-bottom: 40px; }
+        html body #heading .title h1 {
+          margin: 0; }
+          html body #heading .title h1 span {
+            font-size: 45px; }
+        html body #heading .title .sub {
+          font-size: 40px;
+          line-height: 40px;
+          margin: 0; }
+    html body #buttoncont a {
+      text-decoration: none; }
+    html body #buttoncont .btn {
+      width: 300px;
+      height: 100px;
+      line-height: 100px;
+      font-weight: bold;
+      font-size: 30px;
+      color: white;
+      background-color: black;
+      margin: 0 auto 0 auto;
+      border-radius: 2em;
+      text-align: center; }
