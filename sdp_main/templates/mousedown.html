@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html>
-    .
     <body>
-        <h1>Mouse Location Test</h1>
+        
+        <h1>Mouse Over Image Test</h1> 
+        <img id="image" onmousemove="display()"  src = "idea.png" alt="test" style = "width:100%;height:100%;">
         <p id="location"></p>
 
 
-        <img id="image" src = "idea.png" alt="test" style = "width:100%;height:100%;">
-
         <script>
-            document.addEventListener("mousemove",display)
+            //check if mouse is out of the image
+            document.getElementById("image").onmouseout =function(){clear()};
             
-            function display(){
+            function clear(){
+                document.getElementById("location").innerHTML = ""
+            }
+
+            //Get X and Y of mouse over the image 
+            function display(){    
                 var x = event.clientX;
                 var y = event.clientY;
                 var coor = 'x' + x + 'y'+y;
                 document.getElementById("location").innerHTML=coor;
             }
-
         </script>
     </body>
-
-
-
-
-
-
-
 </html>
