@@ -1,7 +1,9 @@
 import sys
 from pdf2image import convert_from_path
 import pytesseract
+import numpy as np
 import cv2
+import tempfile
 
 
 def process_document(path):
@@ -9,30 +11,38 @@ def process_document(path):
     if not path.lower().endswith('.pdf'):
         raise Exception('File should be in PDF format')
 
-    doc_images = pdf_to_jpg(path)
-    plaintxt = extract_pdf_text(doc_images)
+    doc_images = pdf_to_image(path)
+    plaintxt = extract_image_text(doc_images)
     var2def = extract_vars(plaintxt)
+    #var2ref =
     print(var2def)
+    #return var2def, var2ref,
 
 
-def pdf_to_jpg(pdf_path):
+def pdf_to_image(pdf_path):
     """
-    Takes in path for PDF document and returns corresponding Image object.
+    Takes in path for PDF document and returns corresponding image as a NumPy
+    array, converting to a PIL Image object as an intermediate state.
     :param str pdf_path: directory path of PDF document
-    :rtype Image ret: Image object in jpg format
+    :rtype np.array ret: image as a NumPy array
     """
-    ret = convert_from_path(pdf_path, fmt='jpg')
-    if not ret:
-        print('Error converting path to jpg')
-        sys.exit()
-    return ret
+    with tempfile.TemporaryDirectory() as path:
+        images_from_path = convert_from_path(pdf_path, output_folder=path, fmt='jpg')
+        if not images_from_path:
+            print('Error converting path to jpg')
+            sys.exit()
+        np_images = []
+        for image in images_from_path:
+            np_images.append(np.array(image))
+    return np_images
 
 
-def extract_pdf_text(images):
+def extract_image_text(images):
     """
-    Takes in PIL Image object and returns the contained text as a string.
+    Takes in document images as NumPy arrays and returns the contained text
+    as a string.
 
-    :param str images: directory path of PDF document
+    :param list[np.array] images: List of NumPy arrays for
     :rtype str ret: concatenated string of all text in PDF document
     """
     # TODO: be able to parse Greek symbols
@@ -41,6 +51,19 @@ def extract_pdf_text(images):
         doc_text = pytesseract.image_to_string(images[i])
         ret += doc_text
     return ret
+
+
+def keyword_set():
+    words = {
+        "denotes",
+        "denoted",
+        "represents",
+        "represented",
+        "means",
+        "stands for",
+        "let",
+    }
+    return words
 
 
 def extract_vars(text):
@@ -58,18 +81,7 @@ def extract_vars(text):
     # TODO: map words to their specific definition, not the whole sentence.
     # TODO: add recognition for mutliple vars in a sentence, add more robust var recog
 
-    keywords = {
-        "denotes",
-        "represents",
-        "means",
-        "stands for",
-        "let",
-    }
-
-    common_vars = {
-        'x', 'y', 'z', 'a', 'b', 't'
-    }
-
+    keywords = keyword_set()
     var2def = {}
 
     text = text.replace('\n', ' ')
@@ -77,9 +89,9 @@ def extract_vars(text):
         var_candidate = None
         contains_keyword = False
         for word in sentence.split():
-            if word in common_vars:
+            if not var_candidate and len(word) == 1:
                 var_candidate = word
-            if word in keywords:
+            if not contains_keyword and word.lower() in keywords:
                 contains_keyword = True
         if var_candidate and contains_keyword:
             var2def[var_candidate] = sentence
@@ -87,7 +99,12 @@ def extract_vars(text):
     return var2def
 
 
-def redraw(image, var2def):
+def adf():
+    var2ref = {}
+    return var2ref
+
+
+def find_occurences(letter, image):
     """
 
     :param PIL Image image:
@@ -95,9 +112,10 @@ def redraw(image, var2def):
     :rtype ??? processed_image:
     :rtype
     """
-    cv2.matchTemplate(image, )
+    # cv2.matchTemplate(image, )
+    pass
 
 
 if __name__ == '__main__':
-    path = 'pdfs/test1.pdf'
+    path = 'pdfs/TeletrafficTheoryPresentationSubject.pdf'
     pd = process_document(path)
