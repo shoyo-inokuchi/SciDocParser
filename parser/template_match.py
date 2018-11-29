@@ -8,11 +8,24 @@ from pdf2image import convert_from_path
 
 def template_match(images, letter, threshold=0.8):
     matches = {}
+    res = None
+    loc = None
     for i in range(len(images)):
         res = cv2.matchTemplate(images[i], letter, cv2.TM_CCOEFF_NORMED)
-        loc = np.where(res >= threshold)
-        print(loc)
+        loc = []
+        for row in range(len(res)):
+            for col in range(len(res[0])):
+                if res[row][col] > threshold:
+                    loc.append((row, col))
         matches[i + 1] = loc
+
+    print(loc)
+    cv2.imshow('res', res)
+    cv2.imshow('images', images[0])
+    cv2.imshow('letter', letter)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
     return matches
 
 
