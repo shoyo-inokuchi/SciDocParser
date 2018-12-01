@@ -1,36 +1,53 @@
 // styles.scss
-html {
-  font-family: "Arial", Times, serif;
-  background-color: #557399;
-  body {
-    padding: 0;
-    margin: 0;
-    .content {
-      width: 1000px;
-    }
-    #heading {
-      width: 100%;
-      background-image: url("../images/zucc.jpg");
-      background-size: 100% 50%;
-      background-repeat: no-repeat;
-
-      .title {
-        font-size: 90px;
-        color: white;
-        margin: 0;
-        margin-bottom: 40px;
-        h1 {
-          margin: 0;
-          span {
-            font-size: 45px;
-          }
-        }
-        .sub {
-          font-size: 40px;
-          line-height: 40px;
-          margin: 0;
-        }
-      }
-    }
-  }
+html{
+	font-family: "Arial", Times, serif;
+	body{
+		padding: 0;
+		margin: 0;
+		background-color: #f2f7f7;
+		.content{
+			width: 1000px;
+			margin: 0 auto 0 auto;
+			background-color: white;
+		}
+		#heading{
+			// background-image: url("../images/zucc.jpg");
+			// background-size: 100% 50%;
+			// background-repeat: no-repeat;
+			text-align: center;
+			.title{
+				font-size: 90px;
+				margin: 0;
+				margin-bottom: 40px;
+				h1{
+					margin: 0;
+					span{
+						font-size: 45px;
+					}
+				}
+				.sub{
+					font-size: 40px;
+					line-height: 40px;
+					margin: 0;
+				}
+			}
+		}
+		#buttoncont{
+			a{
+				text-decoration: none;
+			}
+			.btn{
+				width: 300px;
+				height: 100px;
+				line-height: 100px;
+				font-weight: bold;
+				font-size: 30px;
+				color: white;
+				background-color: black;
+				margin: 0 auto 0 auto;
+				border-radius: 2em;
+				text-align: center;
+			}
+		}	
+	}
 }
