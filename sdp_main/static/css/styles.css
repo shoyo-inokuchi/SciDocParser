@@ -3,12 +3,24 @@ html {
   html body {
     padding: 0;
     margin: 0;
-    background-color: #f2f7f7; }
+    background-color: #333333; }
+    html body section {
+      margin: 0;
+      padding: 0; }
     html body .content {
       width: 1000px;
       margin: 0 auto 0 auto;
-      background-color: white; }
+      padding: 20px;
+      background-color: #b3b3b3;
+      word-wrap: break-word; }
+      html body .content h2 {
+        font-size: 50px; }
+      html body .content p {
+        font-size: 20px; }
     html body #heading {
+      background-image: url("../images/zucc.jpg");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
       text-align: center; }
       html body #heading .title {
         font-size: 90px;
@@ -22,6 +34,26 @@ html {
           font-size: 40px;
           line-height: 40px;
           margin: 0; }
+    html body #navigation .navbar {
+      padding: 0;
+      display: flex;
+      height: 50px;
+      background-color: black;
+      list-style-type: none; }
+      html body #navigation .navbar .navbutton {
+        width: calc(25% - 40px);
+        margin: 0 20px;
+        text-align: center;
+        vertical-align: middle;
+        background-color: black;
+        border-radius: 40px; }
+        html body #navigation .navbar .navbutton:hover {
+          background-color: #262626; }
+        html body #navigation .navbar .navbutton a {
+          text-decoration: none;
+          font-weight: bold;
+          color: white;
+          line-height: 50px; }
     html body #buttoncont a {
       text-decoration: none; }
     html body #buttoncont .btn {
@@ -30,8 +62,16 @@ html {
       line-height: 100px;
       font-weight: bold;
       font-size: 30px;
-      color: white;
+      color: #b3b3b3;
       background-color: black;
       margin: 0 auto 0 auto;
       border-radius: 2em;
+      text-align: center; }
+  html footer {
+    background-color: black; }
+    html footer .content {
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      height: 250px;
       text-align: center; }
