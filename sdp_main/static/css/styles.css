@@ -4,6 +4,12 @@ html {
     padding: 0;
     margin: 0;
     background-color: #333333; }
+    html body #pg1, html body #pg2, html body #pg3, html body #pg4 {
+      display: none; }
+    html body .nowpage {
+      display: block !important; }
+    html body .blurpage {
+      filter: blur(4px); }
     html body section {
       margin: 0;
       padding: 0; }
@@ -17,6 +23,22 @@ html {
         font-size: 50px; }
       html body .content p {
         font-size: 20px; }
+    html body .aboutbutton {
+      background-color: #00b383;
+      width: 150px;
+      height: 100px;
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      margin: 0;
+      border-radius: 100px;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      opacity: 0.5; }
+      html body .aboutbutton:hover {
+        opacity: 1; }
     html body #heading {
       background-image: url("../images/zucc.jpg");
       background-size: 100% 100%;
@@ -54,19 +76,28 @@ html {
           font-weight: bold;
           color: white;
           line-height: 50px; }
-    html body #buttoncont a {
-      text-decoration: none; }
-    html body #buttoncont .btn {
-      width: 300px;
-      height: 100px;
-      line-height: 100px;
-      font-weight: bold;
-      font-size: 30px;
-      color: #b3b3b3;
-      background-color: black;
-      margin: 0 auto 0 auto;
-      border-radius: 2em;
-      text-align: center; }
+    html body #buttoncont {
+      background-color: black; }
+      html body #buttoncont a {
+        text-decoration: none; }
+      html body #buttoncont .btn {
+        width: 300px;
+        height: 100px;
+        line-height: 100px;
+        font-weight: bold;
+        font-size: 30px;
+        color: #b3b3b3;
+        background-color: black;
+        margin: 0 auto 0 auto;
+        border-radius: 2em;
+        text-align: center; }
+        html body #buttoncont .btn:hover {
+          background-color: white; }
+  html #pg2 {
+    position: absolute;
+    top: 50%;
+    box-shadow: 10px 5px 5px black;
+    margin: 0 auto auto 0; }
   html footer {
     background-color: black; }
     html footer .content {
