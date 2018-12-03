@@ -114,6 +114,7 @@ def keyword_set():
         "means",
         "stands for",
         "let",
+        "letting",
     }
     return words
 
