@@ -4,7 +4,7 @@ docparser/TODO.txt
 docparser/pdfs
 docparser/samples
 docparser/.DS_Store
-docparser/parser/__pycache__
+docparser/parse/__pycache__
 docparser/tests/__pycache__
 sdp_main/db.sqlite3
 sdp_main/SciDocParser/__pycache__
