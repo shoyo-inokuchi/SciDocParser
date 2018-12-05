@@ -1,6 +1,6 @@
 import os
 import unittest
-from docparser.parser import parser
+from docparser.parse import process_doc
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

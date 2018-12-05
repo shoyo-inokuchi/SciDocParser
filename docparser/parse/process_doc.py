@@ -132,18 +132,9 @@ def find_occurences(var2def, images):
     """
     var2ref = {}
     for var in var2def:
-        occurrences = template_match(letter_image[var], images)
-        if occurrences is None:
-            print(f'Expected {var} on image, got None.')
-            sys.exit()
+        occurrences = []
         var2ref[var] = occurrences
     return var2ref
-
-
-def template_match(letter, images):
-    ret = cv2.matchTemplate(letter, images)
-
-    return ret
 
 
 def jsonify(data):
@@ -157,7 +148,7 @@ def jsonify(data):
 
 if __name__ == '__main__':
     start = time.time()
-    path = 'pdfs/test3.pdf'
+    path = 'pdfs/test_single_word.pdf'
     pd = process_document(path)
     end = time.time() - start
     print(f'Process took {end} s')
