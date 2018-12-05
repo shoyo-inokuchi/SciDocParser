@@ -1,5 +1,4 @@
-import sys
-from pdf2image import convert_from_path
+import pdf2image
 import pytesseract
 import numpy as np
 import cv2
@@ -19,21 +18,24 @@ def process_document(path):
                             page
         dict['var2def'] ->  dictionary with vars mapped to sentence that
                             defined them
-        dict['var2ref'] ->  dictionary with vars mapped to list of occurrence
-                            coordinates
+        dict['var2ref'] ->  dictionary with vars mapped to all occurrence
+                            coordinates for each page
     """
     # TODO: consider more robust file checking
     if not path.lower().endswith('.pdf'):
         raise Exception('File should be in PDF format')
 
     doc_images_rgb = pdf_to_image(path)
-    doc_images_gray = [cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) for image in doc_images_rgb]
+    # TODO: test whether this conversion actually saves time
+    doc_images_gray = [cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+                       for image
+                       in doc_images_rgb]
     plaintxt = extract_image_text(doc_images_gray)
     var2def = extract_vars(plaintxt)
     var2ref = find_occurences(var2def, doc_images_gray)
-    print(var2def)
-    print(doc_images_rgb)
-    return jsonify({'images': doc_images_rgb, 'var2def': var2def, 'var2ref': var2ref})
+    return jsonify({'images': doc_images_rgb,
+                    'var2def': var2def,
+                    'var2ref': var2ref})
 
 
 def pdf_to_image(pdf_path):
@@ -41,13 +43,14 @@ def pdf_to_image(pdf_path):
     Takes in path for PDF document and returns corresponding image as a NumPy
     array, converting to a PIL Image object as an intermediate state.
     :param str pdf_path: directory path of PDF document
-    :rtype np.array ret: images as a NumPy array of Numpy arrays (RGB)
+    :rtype List[np.array] ret: list of images as Numpy arrays (RGB)
     """
     with tempfile.TemporaryDirectory() as path:
-        images_from_path = convert_from_path(pdf_path, output_folder=path, fmt='jpg')
+        images_from_path = pdf2image.convert_from_path(pdf_path,
+                                                       output_folder=path,
+                                                       fmt='jpg')
         if not images_from_path:
-            print('Error converting path to jpg')
-            sys.exit()
+            raise Exception('Could not convert path to jpg')
         np_images = []
         for image in images_from_path:
             np_images.append(np.array(image))
@@ -59,7 +62,7 @@ def extract_image_text(images):
     Takes in document images as NumPy arrays and returns the contained text
     as a string.
 
-    :param list[np.array] images: List of NumPy arrays for
+    :param list[np.array] images: List of NumPy array images
     :rtype str ret: concatenated string of all text in PDF document
     """
     # TODO: be able to parse Greek symbols
@@ -72,18 +75,19 @@ def extract_image_text(images):
 
 def extract_vars(text):
     """
-    (Naively) parses text for instances where variables are defined ("...x denotes...")
-    and returns a dictionary where defined variables are mapped to the
-    sentence that defines them.
-        Ex. "x denotes number of people." would be mapped as
-            {'x':'x denotes number of people.'}.
+    Parses text for instances where variables are defined ("...x denotes...")
+    and returns a dictionary where defined variables are mapped to the sentence
+    that defines them.
+    Ex. "x denotes number of people." would be mapped as:
+        {'x':'x denotes number of people.'}.
 
     :param str text: extracted document text
     :rtype dict[str, str] var2def: vars mapped to sentence that defined them
     """
+    # TODO: add more robust var recognition
     # TODO: handle documents where the same variable has multiple definitions.
+    # TODO: add recognition for multiple vars in a sentence
     # TODO: map words to their specific definition, not the whole sentence.
-    # TODO: add recognition for mutliple vars in a sentence, add more robust var recog
 
     keywords = keyword_set()
     var2def = {}
@@ -128,12 +132,27 @@ def find_occurences(var2def, images):
     :param PIL Image image:
     :param dict[str, str] var2def:
     :rtype ??? processed_image:
-    :rtype
     """
+    # var maps to: list of each page(list of each coord(list of [(top left coord), (bottom right coord]))
+    all_letters2coords = {}
+    for image in images:
+        h, w, _ = image.shape
+        boxes = pytesseract.image_to_boxes(image)
+
+        for b in boxes.splitlines():
+            b = b.split()
+            letter = b[0]
+            top_left = (b[1], b[2])
+            bot_right = (b[3], b[4])
+            coords = (top_left, bot_right)
+            if letter in all_letters2coords:
+                all_letters2coords[letter].append(coords)
+            else:
+                all_letters2coords[letter] = [coords]
+
     var2ref = {}
     for var in var2def:
-        occurrences = []
-        var2ref[var] = occurrences
+        var2ref[var] = all_letters2coords[var]
     return var2ref
 
 
