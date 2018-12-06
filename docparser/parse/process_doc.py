@@ -32,7 +32,7 @@ def process_document(path):
                        in doc_images_rgb]
     plaintxt = extract_image_text(doc_images_gray)
     var2def = extract_vars(plaintxt)
-    var2ref = find_occurences(var2def, doc_images_gray)
+    var2ref = find_occurrences(var2def, doc_images_gray)
     return jsonify({'images': doc_images_rgb,
                     'var2def': var2def,
                     'var2ref': var2ref})
@@ -123,17 +123,24 @@ def keyword_set():
     return words
 
 
-def find_occurences(var2def, images):
+def find_occurrences(var2def, images):
     """
     For each variable in dictionary var2def, find all occurrences of that
-    variable in each page of images. Return a dictionary where each
-    variable is mapped to a List of ...
+    variable in each page of images.
 
-    :param PIL Image image:
-    :param dict[str, str] var2def:
-    :rtype ??? processed_image:
+    :param dict[str, str] var2def: dictionary of variables mapped to the
+                                   sentence that defined it.
+    :param List[np.array] images: list of images of each page in the document
+    :rtype dict[str, list[list[tuple(tuple(int,int), tuple(int,int))]]] var2ref:
+                dictionary where each variable is mapped to:
+                    a list of sub-lists, where each sub-list denotes a single
+                    page of the document.
+                    each sub-list contains every coordinate where the a
+                    variable occurs on the page.
+                    each coordinate is denoted by 2 tuples, where the first
+                    tuple denotes the top left coordinate, the second tuple
+                    denotes the bottom right coordinate.
     """
-    # var maps to: list of each page(list of each coord(list of [(top left coord), (bottom right coord]))
     all_letters2coords = {}
     for image in images:
         h, w, _ = image.shape
@@ -159,15 +166,15 @@ def find_occurences(var2def, images):
 def jsonify(data):
     """
     Takes in processed data of document images and returns it in JSON format.
-    :param dict data: dict object created in process_document() function
-    :return: input data in JSON format
+    :param dict data: dictionary object created in process_document() function
+    :return: data converted to JSON format
     """
-    pass
+    return data
 
 
 if __name__ == '__main__':
     start = time.time()
-    path = 'pdfs/test_single_word.pdf'
+    path = '../pdfs/test_single_word.pdf'
     pd = process_document(path)
     end = time.time() - start
     print(f'Process took {end} s')

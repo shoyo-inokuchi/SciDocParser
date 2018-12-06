@@ -1,23 +1,17 @@
 import os
 import unittest
-from docparser.parse import process_doc
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from docparser.parse import process_doc as pd
 
 
-class Base(unittest.TestCase):
+class ParserTests(unittest.TestCase):
     def setUp(self):
-        print(BASE_DIR)
-        #pdf_path =
-        pass
-
-
-class ParserTests(Base):
-    def test_process_documents(self):
         pass
 
     def test_pdf_to_image(self):
-        pass
+        pdf_path = "pdfs/test_sample1.pdf"
+        img = pd.pdf_to_image(pdf_path)
+        images = pd.pdf_to_image(img)
+        assert
 
     def test_extract_image_text(self):
         pass
