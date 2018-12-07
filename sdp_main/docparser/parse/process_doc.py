@@ -141,25 +141,23 @@ def find_occurrences(var2def, images):
                     tuple denotes the top left coordinate, the second tuple
                     denotes the bottom right coordinate.
     """
-    all_letters2coords = {}
+    all_vars2coords = {}
     for image in images:
-        h, w, _ = image.shape
         boxes = pytesseract.image_to_boxes(image)
-
         for b in boxes.splitlines():
             b = b.split()
-            letter = b[0]
+            var = b[0]
             top_left = (b[1], b[2])
             bot_right = (b[3], b[4])
             coords = (top_left, bot_right)
-            if letter in all_letters2coords:
-                all_letters2coords[letter].append(coords)
-            else:
-                all_letters2coords[letter] = [coords]
-
+            if var in var2def:
+                if var in all_vars2coords:
+                    all_vars2coords[var].append(coords)
+                else:
+                    all_vars2coords[var] = [coords]
     var2ref = {}
     for var in var2def:
-        var2ref[var] = all_letters2coords[var]
+        var2ref[var] = all_vars2coords[var]
     return var2ref
 
 
@@ -169,7 +167,9 @@ def jsonify(data):
     :param dict data: dictionary object created in process_document() function
     :return: data converted to JSON format
     """
-    return data
+    for i in range(len(data['images'])):
+        data['images'][i] = data['images'][i].tolist()
+    return json.dumps(data)
 
 
 if __name__ == '__main__':

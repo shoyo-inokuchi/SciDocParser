@@ -1,6 +1,5 @@
-import os
 import unittest
-from docparser.parse import process_doc as pd
+from sdp_main.docparser.parse import process_doc as pd
 
 
 class ParserTests(unittest.TestCase):
