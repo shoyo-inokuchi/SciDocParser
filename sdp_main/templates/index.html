@@ -7,29 +7,121 @@
 {% block style %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+    <script src="{% static "js/jquery-3.3.1.js" %}"></script>
+    <script src="{% static "js/rango-jquery.js" %}"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("h1").hide();
+            });
+        });  
+        function page(theLink){
+          // $(".active").removeClass("active");
+          // $(this).addClass("active");
+          $(".nowpage").fadeOut(200,function(){
+              $(this).removeClass("nowpage");   
+          });
+          $("#pg" + theLink.id).fadeIn(200,function(){
+              $(this).addClass("nowpage"); 
+          });
+        };
+        function pageblur(theLink){
+          $(".nowpage").fadeOut(200,function(){
+            $(this).addClass("blurpage");
+           });
+          $("#pg" + theLink.id).fadeIn(200,function(){
+            $(this).addClass("nowpage"); 
+          });
+        };
+        function closeblur(theLink){
+          $(".nowpage").fadeOut(200,function(){
+              $(this).removeClass("nowpage");   
+          });
+          $("#pg" + theLink.id).fadeIn(200,function(){
+              $(this).addClass("nowpage"); 
+          });
+          $("#pg" + theLink.id).fadeOut(200,function(){
+            $(this).removeClass("blurpage");
+           });
+        }
+    </script>
 {% endblock %}
 
 {% block body %}
     <header>
         <section id="heading">
-            <div class="content">
-                <div class="title">
-                    <h1>S<span>ci</span>D<span>oc</span>P<span>arser</span></h1>
-                    <h2 class="sub">-Online Scientific Document Parser-</h2>
-                </div>
-            <a href="https://github.com/shoyo-inokuchi/SciDocParser"><img src="{% static "images/GitHub-Mark-32px.png" %}" srcset="{% static "images/GitHub-Mark-32px.png" %} 1x,{% static "images/GitHub-Mark-64px.png" %} 2x" width="32" height="32" alt="To our GibHub page!"></a>
+            <div class="title">
+                <h1 id="fuck">SanDPiper</h1>
+                <h2 class="sub">-Scientific Document Parser-</h2>
             </div>
+            <a href="https://github.com/shoyo-inokuchi/SciDocParser"><img src="{% static "images/GitHub-Mark-32px.png" %}" srcset="{% static "images/GitHub-Mark-32px.png" %} 1x,{% static "images/GitHub-Mark-64px.png" %} 2x" width="32" height="32" alt="To our GibHub page!"></a>
+        </section>
+        <section id="navigation">
+            <!-- <ul class="navbar">
+                <li class="navbutton">
+                    <a id="1" onClick="page(this)" href="#">Page 1</a>
+                </li>
+                <li class="navbutton">
+                    <a id="2" onClick="pageblur(this)" href="#">About Us</a>
+                </li>
+            </ul> -->
         </section>
     </header>
-    <section id="buttoncont">
+    <div>
+      <a id="2" onClick="pageblur(this)" href="#" class="button">
+        <div class="aboutbutton"><p>About Us</p></div>
+      </a>
+    </div>
+    <section id="pg1" class="nowpage">
+        <section id="buttoncont">
+              <a href=""><div class="btn">upload paper</div></a>
+        </section>
+        <section id="shittybutton">
+            <div class="content">
+                <button onClick="alert('get that shitty title out of here');">fuckin click me i dare u</button>
+            </div>
+        </section>
+        <section id="frame">
+            <div class="content">
+              
+              <!-- <iframe 
+                src="" 
+                frameborder="0">  
+              </iframe> -->
+            </div>
+        </section>
+        <section id="placehold">
+            <div class="content">
+                <h2>SAMPLETITLE</h2>
+                <p>sampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletext</p>
+                <p>sampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletext</p>
+                <p>sampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletextsampletext</p>
+            </div>
+        </section>
+    </section>
+
+    <section id="pg2" class="">
         <div class="content">
-            <a href=""><div class="btn">upload paper</div></a>
+            dick
+            <a id="1" href="#" onClick="closeblur(this)">close</a>
         </div>
     </section>
-    <section id="jscontainer">
-        
+
+<!--     <section id="pg3">
+        <div class="content">
+            this is page 3, rendered from the same html file.
+        </div>
     </section>
+
+    <section id="pg4">
+        <div class="content">
+            this is page 4, rendered from the same html file.
+        </div>
+    </section> -->
+
     <footer>
-        
+        <div class="content">
+            footer boyz
+        </div>
     </footer>
 {% endblock %}
