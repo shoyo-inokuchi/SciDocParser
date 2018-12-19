@@ -1,3 +1,13 @@
 .DS_Store
 .idea
-parser/pdfs
+docparser/TODO.txt
+docparser/pdfs
+docparser/samples
+docparser/.DS_Store
+docparser/parse/__pycache__
+docparser/tests/__pycache__
+sdp_main/db.sqlite3
+sdp_main/SciDocParser/__pycache__
+sdp_main/docview/__pycache__
+sdp_main/sdp_main.iml
+sdp_main/.DS_Store

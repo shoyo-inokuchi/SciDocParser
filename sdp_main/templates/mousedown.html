@@ -1,26 +1,59 @@
 <!DOCTYPE html>
 <html>
+        <style>
+                    #test{ 
+                        display:none;
+                        background-color: #0a52ed;    
+                        position: absolute;
+                        opacity:0.5;
+                        border-width:1px; 
+                        border-style: solid; 
+                        border-color: #000000;
+                        height:200px;
+                        width:200px;
+                        top:1px;
+                    }
+            </style>
+
     <body>
         
         <h1>Mouse Over Image Test</h1> 
-        <img id="image" onmousemove="display()"  src = "idea.png" alt="test" style = "width:100%;height:100%;">
+        <img id="image" src = "idea.png" alt="test" style = "width:100%;height:100%;">
         <p id="location"></p>
+        <p id="box"></p>
+        <div id="test">hello</div>
 
 
         <script>
-            //check if mouse is out of the image
             document.getElementById("image").onmouseout =function(){clear()};
             
+            document.getElementById("image").onmousedown=function(){box()};
+
             function clear(){
                 document.getElementById("location").innerHTML = ""
-            }
+                document.getElementById("box").innerHTML =""
+                document.getElementById("test").style.display="none"
 
-            //Get X and Y of mouse over the image 
+            }
             function display(){    
                 var x = event.clientX;
                 var y = event.clientY;
                 var coor = 'x' + x + 'y'+y;
                 document.getElementById("location").innerHTML=coor;
+            }
+
+            function box(){
+                var x = event.clientX;
+                var y = event.clientY;
+
+                var coor = 'x' + x + 'y'+y;
+
+                document.getElementById("test").style.display= "block";
+                document.getElementById("test").style.top=y +1 + "px";
+                document.getElementById("test").style.left=x - 50 + "px";
+                
+                
+                
             }
         </script>
     </body>
