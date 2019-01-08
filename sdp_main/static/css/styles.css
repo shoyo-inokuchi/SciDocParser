@@ -3,103 +3,48 @@ html {
   html body {
     padding: 0;
     margin: 0;
-    background-color: #333333; }
-    html body #pg1, html body #pg2, html body #pg3, html body #pg4 {
-      display: none; }
-    html body .nowpage {
-      display: block !important; }
-    html body .blurpage {
-      filter: blur(4px); }
-    html body section {
-      margin: 0;
-      padding: 0; }
+    background-color: #5a5a5a; }
     html body .content {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
       width: 1000px;
-      margin: 0 auto 0 auto;
+      margin: 0 auto;
       padding: 20px;
-      background-color: #b3b3b3;
-      word-wrap: break-word; }
-      html body .content h2 {
-        font-size: 50px; }
-      html body .content p {
-        font-size: 20px; }
-    html body .aboutbutton {
-      background-color: #00b383;
-      width: 150px;
-      height: 100px;
-      position: fixed;
-      right: 10px;
-      top: 10px;
-      margin: 0;
-      border-radius: 100px;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      font-weight: bold;
-      opacity: 0.5; }
-      html body .aboutbutton:hover {
-        opacity: 1; }
+      background-color: white;
+      border-radius: 20px; }
+    html body .uploadbox {
+      padding: 10px auto; }
+    html body section {
+      margin-bottom: 20px;
+      color: #5a5a5a; }
     html body #heading {
       text-align: center; }
       html body #heading .title {
-        font-size: 40px;
+        font-size: 50px;
         margin: 0;
-        margin-bottom: 20px; }
+        margin-bottom: 40px;
+        color: white; }
         html body #heading .title h1 {
           margin: 0; }
           html body #heading .title h1 span {
-            font-size: 30px; }
+            font-size: 45px; }
         html body #heading .title .sub {
-          font-size: 25px;
-          line-height: 30px;
+          font-size: 40px;
+          line-height: 40px;
           margin: 0; }
-    html body #navigation .navbar {
-      padding: 0;
-      display: flex;
-      height: 50px;
-      background-color: black;
-      list-style-type: none; }
-      html body #navigation .navbar .navbutton {
-        width: calc(25% - 40px);
-        margin: 0 20px;
-        text-align: center;
-        vertical-align: middle;
-        background-color: black;
-        border-radius: 40px; }
-        html body #navigation .navbar .navbutton:hover {
-          background-color: #262626; }
-        html body #navigation .navbar .navbutton a {
-          text-decoration: none;
-          font-weight: bold;
-          color: white;
-          line-height: 50px; }
-    html body #buttoncont {
-      background-color: black; }
-      html body #buttoncont a {
-        text-decoration: none; }
-      html body #buttoncont .btn {
-        width: 300px;
-        height: 100px;
-        line-height: 100px;
-        font-weight: bold;
-        font-size: 30px;
-        color: #b3b3b3;
-        background-color: black;
-        margin: 0 auto 0 auto;
-        border-radius: 2em;
-        text-align: center; }
-        html body #buttoncont .btn:hover {
-          background-color: white; }
-  html #pg2 {
-    position: absolute;
-    top: 50%;
-    box-shadow: 10px 5px 5px black;
-    margin: 0 auto auto 0; }
-  html footer {
-    background-color: black; }
-    html footer .content {
-      background-color: black;
-      color: white;
+    html body #buttoncont a {
+      text-decoration: none; }
+    html body #buttoncont .btn {
+      width: 300px;
+      height: 100px;
+      line-height: 100px;
       font-weight: bold;
-      height: 250px;
+      font-size: 30px;
+      color: white;
+      background-color: black;
+      margin: 0 auto 0 auto;
+      border-radius: 2em;
       text-align: center; }
+      html body #buttoncont .btn:hover {
+        background-color: #094c75; }

@@ -1,14 +1,26 @@
 // styles.scss
+@import "mixin";
+
 html{
 	font-family: "Arial", Times, serif;
 	body{
 		padding: 0;
 		margin: 0;
-		background-color: #f2f7f7;
+		background-color: #5a5a5a;
 		.content{
+			@include box_sizing();
 			width: 1000px;
-			margin: 0 auto 0 auto;
+			margin: 0 auto;
+			padding: 20px;
 			background-color: white;
+			border-radius: 20px;
+		}
+		.uploadbox{
+			padding: 10px auto;
+		}
+		section{
+			margin-bottom: 20px;
+			color: #5a5a5a;
 		}
 		#heading{
 			// background-image: url("../images/zucc.jpg");
@@ -16,9 +28,10 @@ html{
 			// background-repeat: no-repeat;
 			text-align: center;
 			.title{
-				font-size: 90px;
+				font-size: 50px;
 				margin: 0;
 				margin-bottom: 40px;
+				color: white;
 				h1{
 					margin: 0;
 					span{
@@ -31,6 +44,9 @@ html{
 					margin: 0;
 				}
 			}
+		}
+		#intro{
+
 		}
 		#buttoncont{
 			a{
@@ -47,6 +63,9 @@ html{
 				margin: 0 auto 0 auto;
 				border-radius: 2em;
 				text-align: center;
+				&:hover{
+					background-color: #094c75;
+				}
 			}
 		}	
 	}

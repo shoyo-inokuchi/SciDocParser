@@ -1,0 +1,23 @@
+@mixin black-background(){
+	background-color: black;
+}
+
+@mixin fb($direction){
+	display: flex;
+	flex-direction: $direction;
+}
+
+@mixin blur($degree){
+	filter: blur($degree);
+        -webkit-filter: blur($degree);
+        -moz-filter: blur($degree);
+        -o-filter: blur($degree);
+        -ms-filter: blur($degree);
+
+}
+
+@mixin box_sizing(){
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
